@@ -25,10 +25,14 @@ class EBook (Book):
         super().__init__()
         self.file_size = file_size
         self.format = format
+
+
         for root, dirs, files in os.walk:
             for file in files:
                 if file.endswith('.txt'):
                     print(os.path.join(root, file))
+
+                    
                 elif file.endwith('.pdf'):
                     print(os.path.join(root, file))
                 elif file.endwith('.fb2'):
