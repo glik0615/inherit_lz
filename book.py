@@ -12,6 +12,8 @@ class Book:
         print('Название книги -', self.title)
         print('Автор книги -', self.author)
         print('Год издания -', self.year)
+    #===============================================
+
 
 
     # Функция "is_actual" определяет "возраст" книги 
@@ -23,6 +25,9 @@ class Book:
         else:
             pr = "новая"  
         print(pr)
+    #================================================
+
+
 
 # Создание наследственного класса "EBook"
 class EBook(Book):
@@ -30,8 +35,11 @@ class EBook(Book):
         super().__init__(title, author, year)
         self.file_size = file_size
         self.format = format
+#======================================================
 
-    # Создание метода tit
+
+
+    # Создание метода tit для удаления расширения
     def tit(self):
         book_titles = []
         for root, dirs, files in os.walk('Library'):
@@ -39,7 +47,10 @@ class EBook(Book):
             book_titles = [book.rpartition('.')[0] for book in files]
             print(book_titles)
         return book_titles
+    #===========================================================
 
+
+    
     # Метод free для проверки бесплатности книги
     def free(self, book_titles):
         for i in range (0, len(book_titles)):
@@ -50,12 +61,18 @@ class EBook(Book):
                     print("Данная книга не является бесплатной")
             else:
                 pass
+    #=======================================================
+
+
 
     # Импортировали функцию, выводящую информацию о книге
     def get_info(self):
-        super().get_info()  # Используем метод родительского класса
+        super().get_info()  
         print('Количество страниц', self.file_size)
         print('Формат книги', self.format)
+    #=====================================================
+
+
 
     # Ввели функцию, определяющую, есть ли книга с таким названием
     # (привели к нижнему регистру, убради пробелы)
@@ -66,7 +83,10 @@ class EBook(Book):
                 print("Есть в наличии")
                 return
         print("Нет в наличии")
+#============================================================================
 
+
+# Определили функцию в main
 def main():
 
     my_book = EBook('War and Peace', 'Leo Tolstoy', 1972, 1300, 'средний')
